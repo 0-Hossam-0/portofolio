@@ -1,0 +1,12 @@
+.app-container {
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.main-content {
+  margin-top: 80px;
+}
+
+.dark {
+  color-scheme: dark;
+}

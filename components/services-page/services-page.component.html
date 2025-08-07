@@ -1,0 +1,104 @@
+<section id="services-page" class="services-page-section">
+  <div id="servicesShapes" class="floating-shapes"></div>
+  
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">My Services</h2>
+      <p class="section-subtitle">Comprehensive solutions for your digital needs</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <div 
+        *ngFor="let service of services; let i = index"
+        class="service-card"
+        [style.animation-delay]="(i * 0.1) + 's'"
+      >
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-title">{{ service.title }}</h3>
+        <p class="service-description">{{ service.description }}</p>
+        
+        <div class="service-features">
+          <h4 class="features-title">Features:</h4>
+          <ul class="features-list">
+            <li *ngFor="let feature of service.features">{{ feature }}</li>
+          </ul>
+        </div>
+
+        <div class="service-technologies">
+          <span 
+            *ngFor="let tech of service.technologies"
+            class="tech-badge"
+          >
+            {{ tech }}
+          </span>
+        </div>
+
+        <div class="service-pricing">
+          <div class="pricing-info">
+            <span class="price">{{ service.pricing }}</span>
+            <span class="timeline">{{ service.timeline }}</span>
+          </div>
+          <button class="service-btn">Get Started</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process Section -->
+    <div class="process-section">
+      <h3 class="process-title">How We Work</h3>
+      <div class="process-timeline">
+        <div 
+          *ngFor="let step of processSteps; let i = index"
+          class="process-step"
+          [style.animation-delay]="(i * 0.2) + 's'"
+        >
+          <div class="step-number">{{ step.step }}</div>
+          <div class="step-icon">{{ step.icon }}</div>
+          <h4 class="step-title">{{ step.title }}</h4>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials-section">
+      <h3 class="testimonials-title">What Clients Say</h3>
+      <div class="testimonials-grid">
+        <div 
+          *ngFor="let testimonial of testimonials; let i = index"
+          class="testimonial-card"
+          [style.animation-delay]="(i * 0.15) + 's'"
+        >
+          <div class="testimonial-content">
+            <div class="testimonial-rating">
+              <span 
+                *ngFor="let star of getStarArray(testimonial.rating)"
+                class="star"
+              >⭐</span>
+            </div>
+            <p class="testimonial-text">"{{ testimonial.content }}"</p>
+          </div>
+          <div class="testimonial-author">
+            <img [src]="testimonial.avatar" [alt]="testimonial.name" class="author-avatar">
+            <div class="author-info">
+              <h5 class="author-name">{{ testimonial.name }}</h5>
+              <p class="author-role">{{ testimonial.role }} at {{ testimonial.company }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h3 class="cta-title">Ready to Start Your Project?</h3>
+      <p class="cta-description">Let's discuss your ideas and bring them to life</p>
+      <div class="cta-buttons">
+        <button class="cta-btn primary">Get Free Quote</button>
+        <button class="cta-btn secondary">Schedule Call</button>
+      </div>
+    </div>
+  </div>
+</section>

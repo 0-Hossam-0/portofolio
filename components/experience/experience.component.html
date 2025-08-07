@@ -1,0 +1,214 @@
+<section id="experience" class="experience-section section-padding px-8 lg:px-16 relative overflow-hidden">
+  <!-- Floating Background Animation -->
+  <div class="experience-bg-animation" #experienceBg></div>
+  
+  <!-- Background Gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-blue-900/20 dark:to-indigo-900/20"></div>
+  
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-20 animate-on-scroll">
+      <h2 class="text-6xl font-bold mb-6 text-gradient">Professional Journey</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Transforming ideas into exceptional digital experiences through innovation, leadership, and continuous learning.
+      </p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 animate-on-scroll">
+      <div *ngFor="let stat of stats; let i = index" 
+           class="stat-card glass-effect rounded-2xl p-6 text-center card-hover"
+           [class]="'delay-' + (i + 1)">
+        <div class="text-4xl mb-3">{{ stat.icon }}</div>
+        <div class="text-3xl font-bold text-gradient mb-2">{{ stat.value }}</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">{{ stat.label }}</div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-12">
+      
+      <!-- Timeline Section (2 columns) -->
+      <div class="lg:col-span-2">
+        <!-- Work Experience -->
+        <div class="mb-16 animate-left">
+          <h3 class="text-3xl font-bold mb-12 text-gray-800 dark:text-white flex items-center">
+            <span class="text-4xl mr-4">💼</span>
+            Work Experience
+          </h3>
+          
+          <div class="timeline-container relative">
+            <!-- Timeline Line -->
+            <div class="timeline-line absolute left-8 top-0 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-indigo-500 rounded-full"></div>
+            
+            <div class="space-y-12">
+              <div *ngFor="let exp of experiences; let i = index" 
+                   class="timeline-item relative animate-on-scroll"
+                   [class]="'delay-' + (i + 2)">
+                
+                <!-- Timeline Dot -->
+                <div class="timeline-dot absolute left-6 w-6 h-6 rounded-full border-4 border-white dark:border-gray-800 shadow-lg z-10"
+                     [class]="'bg-gradient-to-r ' + exp.gradient">
+                  <div class="absolute inset-0 rounded-full animate-ping opacity-20"
+                       [class]="'bg-gradient-to-r ' + exp.gradient"></div>
+                </div>
+                
+                <!-- Company Logo -->
+                <div class="absolute left-4 -top-1 w-10 h-10 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-2xl shadow-lg z-20">
+                  {{ exp.logo }}
+                </div>
+                
+                <!-- Experience Card -->
+                <div class="ml-20 experience-card glass-effect rounded-2xl p-8 card-hover">
+                  <div class="flex flex-wrap items-start justify-between mb-4">
+                    <div>
+                      <h4 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                        {{ exp.title }}
+                      </h4>
+                      <p class="text-lg font-semibold text-gradient mb-2">
+                        {{ exp.company }}
+                      </p>
+                      <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+                        <span class="mr-2">📅</span>{{ exp.period }}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {{ exp.description }}
+                  </p>
+                  
+                  <!-- Achievements -->
+                  <div class="mb-6">
+                    <h5 class="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
+                      <span class="mr-2">🏆</span>Key Achievements
+                    </h5>
+                    <ul class="space-y-2">
+                      <li *ngFor="let achievement of exp.achievements" 
+                          class="flex items-start text-gray-600 dark:text-gray-300">
+                        <span class="sparkle-bullet mr-3 mt-1">✨</span>
+                        <span>{{ achievement }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <!-- Technologies -->
+                  <div>
+                    <h5 class="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
+                      <span class="mr-2">🛠️</span>Technologies Used
+                    </h5>
+                    <div class="flex flex-wrap gap-2">
+                      <span *ngFor="let tech of exp.technologies" 
+                            class="tech-tag px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 hover:scale-105 transition-transform">
+                        {{ tech }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar (1 column) -->
+      <div class="space-y-12 animate-right">
+        
+        <!-- Skills Section -->
+        <div class="skills-section glass-effect rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white flex items-center">
+            <span class="text-3xl mr-3">⚡</span>
+            Core Skills
+          </h3>
+          
+          <div class="space-y-8">
+            <div *ngFor="let category of getSkillCategories()" class="skill-category">
+              <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
+                <span class="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mr-3"></span>
+                {{ category }}
+              </h4>
+              
+              <div class="space-y-4">
+                <div *ngFor="let skill of getSkillsByCategory(category)" class="skill-item">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium text-gray-600 dark:text-gray-400">{{ skill.name }}</span>
+                    <span class="text-sm font-bold text-gradient">{{ skill.level }}%</span>
+                  </div>
+                  <div class="skill-bar-container w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out glow-effect"
+                         [style.width.%]="skill.level"
+                         [attr.data-percentage]="skill.level">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="education-section glass-effect rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white flex items-center">
+            <span class="text-3xl mr-3">🎓</span>
+            Education
+          </h3>
+          
+          <div class="space-y-6">
+            <div *ngFor="let edu of education" class="education-card border-l-4 border-gradient-to-b from-blue-500 to-purple-500 pl-6 pb-6">
+              <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
+                {{ edu.degree }}
+              </h4>
+              <p class="text-blue-600 dark:text-blue-400 font-semibold mb-2">
+                {{ edu.institution }}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 flex items-center">
+                <span class="mr-2">📅</span>{{ edu.period }}
+                <span *ngIf="edu.gpa" class="ml-4 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-semibold">
+                  GPA: {{ edu.gpa }}
+                </span>
+              </p>
+              <ul class="space-y-1">
+                <li *ngFor="let highlight of edu.highlights" 
+                    class="text-sm text-gray-600 dark:text-gray-300 flex items-start">
+                  <span class="text-yellow-500 mr-2 mt-0.5">⭐</span>
+                  {{ highlight }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div class="certifications-section glass-effect rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white flex items-center">
+            <span class="text-3xl mr-3">🏅</span>
+            Certifications
+          </h3>
+          
+          <div class="grid gap-4">
+            <div *ngFor="let cert of certifications" 
+                 class="certification-card bg-gradient-to-r from-white/50 to-blue-50/50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-xl p-4 border border-blue-200/50 dark:border-blue-800/50 hover:scale-105 transition-transform">
+              <div class="flex items-start space-x-4">
+                <div class="text-2xl">{{ cert.logo }}</div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-sm font-bold text-gray-800 dark:text-white mb-1">
+                    {{ cert.name }}
+                  </h4>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 font-semibold mb-1">
+                    {{ cert.issuer }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                    {{ cert.date }}
+                  </p>
+                  <p *ngIf="cert.credentialId" class="text-xs text-gray-400 dark:text-gray-500 font-mono">
+                    ID: {{ cert.credentialId }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

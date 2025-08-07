@@ -1,0 +1,129 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#home" (click)="navigateToSection('home')">
+          <span class="logo-text">Portfolio</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a 
+              href="#home" 
+              class="nav-link"
+              [class.active]="activeSection === 'home'"
+              (click)="navigateToSection('home')"
+            >
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#about" 
+              class="nav-link"
+              [class.active]="activeSection === 'about'"
+              (click)="navigateToSection('about')"
+            >
+              About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#services" 
+              class="nav-link"
+              [class.active]="activeSection === 'services'"
+              (click)="navigateToSection('services')"
+            >
+              Services
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#projects" 
+              class="nav-link"
+              [class.active]="activeSection === 'projects'"
+              (click)="navigateToSection('projects')"
+            >
+              Projects
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#experience" 
+              class="nav-link"
+              [class.active]="activeSection === 'experience'"
+              (click)="navigateToSection('experience')"
+            >
+              Experience
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#blog" 
+              class="nav-link"
+              [class.active]="activeSection === 'blog'"
+              (click)="navigateToSection('blog')"
+            >
+              Blog
+            </a>
+          </li>
+          <li class="nav-item">
+            <a 
+              href="#contact" 
+              class="nav-link"
+              [class.active]="activeSection === 'contact'"
+              (click)="navigateToSection('contact')"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="theme-toggle-container">
+        <button 
+          class="theme-toggle" 
+          (click)="toggleTheme()"
+          aria-label="Toggle dark mode"
+        >
+          <div class="theme-toggle-track">
+            <div class="theme-toggle-thumb" [class.dark-mode]="themeService.isDarkMode">
+              <div class="theme-icon sun-icon" [class.hidden]="themeService.isDarkMode">☀️</div>
+              <div class="theme-icon moon-icon" [class.hidden]="!themeService.isDarkMode">🌙</div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="mobile-menu-btn md:hidden"
+        [class.active]="isMenuOpen"
+        (click)="toggleMenu()"
+        aria-label="Toggle menu"
+      >
+        <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+        <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+        <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-menu md:hidden" [class.active]="isMenuOpen">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" (click)="navigateToSection('home')">Home</a></li>
+        <li><a href="#about" (click)="navigateToSection('about')">About</a></li>
+        <li><a href="#services" (click)="navigateToSection('services')">Services</a></li>
+        <li><a href="#projects" (click)="navigateToSection('projects')">Projects</a></li>
+        <li><a href="#experience" (click)="navigateToSection('experience')">Experience</a></li>
+        <li><a href="#blog" (click)="navigateToSection('blog')">Blog</a></li>
+        <li><a href="#contact" (click)="navigateToSection('contact')">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
